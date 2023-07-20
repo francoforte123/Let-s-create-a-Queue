@@ -6,36 +6,23 @@ using System.Threading.Tasks;
 
 namespace Let_s_create_a_Queue
 {
-    internal class MyQueue<T>
+    public class MyQueue<T>
     {
-        public T[] array= new T[10];
-        public int firstElement;
+        protected Queue<T> arrayQueue= new Queue<T>();
 
         public void Queue(T value)        
         {
-            if(firstElement == array.Length - 1)
-            {
-                throw new StackOverflowException();
-            }
-            array[++firstElement] = value;
+            arrayQueue.Enqueue(value);
         }
 
         public T Dequeue()    
         {
-            if(firstElement == -1)
-            {
-                throw new InvalidOperationException();
-            }
-            return array[firstElement--];
+            return arrayQueue.Dequeue();
         }
 
         public T Peek()       
         {
-            if (firstElement == -1)
-            {
-                throw new InvalidOperationException();
-            }
-            return array[firstElement];
+            return arrayQueue.Peek();
         }
     }
 }
